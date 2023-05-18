@@ -6,12 +6,9 @@
         <b-jumbotron bg-variant="muted" text-variant="dark" border-variant="dark">
           <template #header>AntAlbum User</template>
 
-          <template #lead>
-            AntAlbum 임시 유저 페이지입니다.
-          </template>
+          <template #lead> AntAlbum 임시 유저 페이지입니다. </template>
         </b-jumbotron>
       </b-col>
-      <b-col></b-col>
     </b-row>
   </b-container>
 </template>
