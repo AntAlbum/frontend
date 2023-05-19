@@ -30,7 +30,6 @@ Coded by www.creative-tim.com
     <navbar
       :class="[navClasses]"
       :textWhite="this.$store.state.isAbsolute ? 'text-white opacity-8' : 'text-white'"
-      :minNav="navbarMinimize"
       v-if="this.$store.state.showNavbar"
     />
     <router-view />
@@ -41,7 +40,6 @@ Coded by www.creative-tim.com
 import Sidenav from "./examples/Sidenav";
 import Navbar from "@/examples/Navbars/Navbar.vue";
 import AppFooter from "@/examples/Footer.vue";
-import { mapMutations } from "vuex";
 
 export default {
   name: "App",
@@ -49,9 +47,6 @@ export default {
     Sidenav,
     Navbar,
     AppFooter,
-  },
-  methods: {
-    ...mapMutations(["navbarMinimize"]),
   },
   computed: {
     navClasses() {

@@ -18,7 +18,7 @@ export default createStore({
     layout: "default"
   },
   mutations: {
-    navbarMinimize(state) {
+    TOGGLE_NAVIGATION_BAR(state) {
       const sidenav_show = document.querySelector(".g-sidenav-show");
 
       if (sidenav_show.classList.contains("g-sidenav-hidden")) {
@@ -31,12 +31,10 @@ export default createStore({
         state.isPinned = false;
       }
     },
-    navbarFixed(state) {
-      if (state.isNavFixed === false) {
-        state.isNavFixed = true;
-      } else {
-        state.isNavFixed = false;
-      }
-    }
   },
+  actions: {
+    toggleNavbar() {
+      this.commit("TOGGLE_NAVIGATION_BAR");
+    }
+  }
 });

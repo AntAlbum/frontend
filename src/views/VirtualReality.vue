@@ -1,18 +1,16 @@
 <template>
   <div class="mt-3">
     <navbar
-      :minNav="navbarMinimize"
-      :toggle="toggleConfigurator"
-      :class="`${
-        this.$store.state.isNavFixed ? this.$store.state.navbarFixed_class : ''} ${this.$store.state.isNavFixed ? 'bg-white' : 'bg-success'}`
-      "
+      :class="`${this.$store.state.isNavFixed ? this.$store.state.navbarFixed_class : ''} ${
+        this.$store.state.isNavFixed ? 'bg-white' : 'bg-success'
+      }`"
     />
   </div>
   <div
     class="mx-3 mt-4 border-radius-xl position-relative"
     :style="{
       backgroundImage: 'url(' + require('@/assets/img/vr-bg.jpg') + ')',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
     }"
   >
     <sidenav :custom_class="this.$store.state.mcolor" :class="isTransparent" class="fixed-start" />
@@ -28,7 +26,11 @@
                 data-bs-placement="left"
                 title="My Profile"
               >
-                <img class="border-radius-lg" alt="Image placeholder" src="@/assets/img/team-1.jpg" />
+                <img
+                  class="border-radius-lg"
+                  alt="Image placeholder"
+                  src="@/assets/img/team-1.jpg"
+                />
               </a>
               <button
                 class="p-2 mt-2 btn btn-white border-radius-lg d-block"
@@ -107,8 +109,6 @@ import setTooltip from "@/assets/js/tooltip.js";
 
 const body = document.getElementsByTagName("body")[0];
 
-import { mapMutations } from "vuex";
-
 export default {
   name: "virtual-reality",
   components: {
@@ -123,9 +123,6 @@ export default {
   },
   mounted() {
     setTooltip();
-  },
-  methods: {
-    ...mapMutations(["navbarMinimize", "toggleConfigurator"]),
   },
   beforeMount() {
     this.$store.state.layout = "vr";

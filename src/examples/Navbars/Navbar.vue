@@ -165,7 +165,7 @@
 </template>
 <script>
 import Breadcrumbs from "../Breadcrumbs.vue";
-import { mapMutations, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "navbar",
@@ -174,17 +174,15 @@ export default {
       showMenu: false,
     };
   },
-  props: ["minNav", "textWhite"],
+  props: ["textWhite"],
   created() {
-    this.minNav;
+    this.toggleNavbar();
   },
   methods: {
-    ...mapMutations(["navbarMinimize"]),
-    ...mapActions(["toggleSidebarColor"]),
+    ...mapActions(["toggleNavbar"]),
 
     toggleSidebar() {
-      this.toggleSidebarColor("bg-white");
-      this.navbarMinimize();
+      this.toggleNavbar();
     },
   },
   components: {
