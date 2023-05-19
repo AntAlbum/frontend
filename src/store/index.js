@@ -4,7 +4,6 @@ export default createStore({
   state: {
     hideConfigButton: false,
     isPinned: true,
-    showConfig: false,
     sidebarType: "bg-white",
     isRTL: false,
     mcolor: "",
@@ -19,9 +18,6 @@ export default createStore({
     layout: "default"
   },
   mutations: {
-    toggleConfigurator(state) {
-      state.showConfig = !state.showConfig;
-    },
     navbarMinimize(state) {
       const sidenav_show = document.querySelector(".g-sidenav-show");
 
@@ -35,9 +31,6 @@ export default createStore({
         state.isPinned = false;
       }
     },
-    sidebarType(state, payload) {
-      state.sidebarType = payload;
-    },
     navbarFixed(state) {
       if (state.isNavFixed === false) {
         state.isNavFixed = true;
@@ -46,10 +39,4 @@ export default createStore({
       }
     }
   },
-  actions: {
-    toggleSidebarColor({ commit }, payload) {
-      commit("sidebarType", payload);
-    }
-  },
-  getters: {}
 });
