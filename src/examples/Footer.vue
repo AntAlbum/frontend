@@ -7,44 +7,28 @@
             class="text-sm text-center copyright text-muted"
             :class="this.$store.state.isRTL ? 'text-lg-end' : 'text-lg-start'"
           >
-            ©
-            {{ new Date().getFullYear() }}, made with
-            <i class="fa fa-heart"></i> by
-            <a
-              href="https://www.creative-tim.com"
-              class="font-weight-bold"
-              target="_blank"
-              >Creative Tim</a
+            © 2023, made by
+            <a href="https://github.com/antalbum" class="font-weight-bold" target="_blank"
+              >AntAlbum</a
             >
-            for a better web.
           </div>
         </div>
         <div class="col-lg-6">
-          <ul
-            class="nav nav-footer justify-content-center justify-content-lg-end"
-          >
+          <ul class="nav nav-footer justify-content-center justify-content-lg-end">
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com"
+                href="https://github.com/antalbum/backend"
                 class="nav-link text-muted"
                 target="_blank"
-                >Creative Tim</a
+                >Backend</a
               >
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/presentation"
+                href="https://github.com/antalbum/frontend"
                 class="nav-link text-muted"
                 target="_blank"
-                >About Us</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                href="https://www.creative-tim.com/blog"
-                class="nav-link text-muted"
-                target="_blank"
-                >Blog</a
+                >Frontend</a
               >
             </li>
             <li class="nav-item">
@@ -52,7 +36,7 @@
                 href="https://www.creative-tim.com/license"
                 class="nav-link pe-0 text-muted"
                 target="_blank"
-                >License</a
+                >Open Source License</a
               >
             </li>
           </ul>

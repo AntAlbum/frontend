@@ -19,16 +19,8 @@
         id="iconSidenav"
       ></i>
       <router-link class="m-0 navbar-brand" to="/">
-        <img
-          :src="
-            this.$store.state.darkMode || this.$store.state.sidebarType === 'bg-default'
-              ? logoWhite
-              : logo
-          "
-          class="navbar-brand-img h-100"
-          alt="main_logo"
-        />
-        <span class="ms-2 font-weight-bold me-2">Argon Dashboard 2</span>
+        <img :src="logo" class="navbar-brand-img h-100" alt="main_logo" />
+        <span class="ms-2 font-weight-bold me-2">AntAlbum</span>
       </router-link>
     </div>
     <hr class="mt-0 horizontal dark" />
@@ -37,8 +29,7 @@
 </template>
 <script>
 import SidenavList from "./SidenavList.vue";
-import logo from "@/assets/img/logo-ct-dark.png";
-import logoWhite from "@/assets/img/logo-ct.png";
+import logo from "@/assets/img/logo-ct.png";
 
 export default {
   name: "index",
@@ -48,7 +39,6 @@ export default {
   data() {
     return {
       logo,
-      logoWhite,
     };
   },
   props: ["custom_class", "layout"],
