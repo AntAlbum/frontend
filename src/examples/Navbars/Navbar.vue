@@ -175,9 +175,6 @@ export default {
     };
   },
   props: ["textWhite"],
-  created() {
-    this.toggleNavbar();
-  },
   methods: {
     ...mapActions(["toggleNavbar"]),
 
