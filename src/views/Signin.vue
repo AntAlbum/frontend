@@ -67,9 +67,9 @@
 </template>
 
 <script>
-import ArgonInput from "@/components/ArgonInput.vue";
-import ArgonSwitch from "@/components/ArgonSwitch.vue";
-import ArgonButton from "@/components/ArgonButton.vue";
+import ArgonInput from "@/items/ArgonInput.vue";
+import ArgonSwitch from "@/items/ArgonSwitch.vue";
+import ArgonButton from "@/items/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
 
 export default {

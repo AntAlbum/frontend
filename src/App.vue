@@ -36,9 +36,9 @@ Coded by www.creative-tim.com
   </main>
 </template>
 <script>
-import Sidenav from "./examples/Sidenav";
-import Navbar from "@/examples/Navbars/Navbar.vue";
-import AppFooter from "@/examples/Footer.vue";
+import Sidenav from "./components/Sidenav";
+import Navbar from "@/components/Navbars/Navbar.vue";
+import AppFooter from "@/components/Footer.vue";
 
 export default {
   name: "App",

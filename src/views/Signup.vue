@@ -123,10 +123,10 @@
 </template>
 
 <script>
-import AppFooter from "@/examples/PageLayout/Footer.vue";
-import ArgonInput from "@/components/ArgonInput.vue";
-import ArgonCheckbox from "@/components/ArgonCheckbox.vue";
-import ArgonButton from "@/components/ArgonButton.vue";
+import AppFooter from "@/components/PageLayout/Footer.vue";
+import ArgonInput from "@/items/ArgonInput.vue";
+import ArgonCheckbox from "@/items/ArgonCheckbox.vue";
+import ArgonButton from "@/items/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
 
 export default {
