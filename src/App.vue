@@ -20,7 +20,6 @@ Coded by www.creative-tim.com
   <sidenav
     :custom_class="this.$store.state.mcolor"
     :class="[
-      this.$store.state.isTransparent,
       this.$store.state.isRTL ? 'fixed-end' : 'fixed-start',
     ]"
     v-if="this.$store.state.showSidenav"
@@ -59,9 +58,6 @@ export default {
         "px-0 mx-4": !this.$store.state.isAbsolute,
       };
     },
-  },
-  beforeMount() {
-    this.$store.state.isTransparent = "bg-transparent";
   },
 };
 </script>
