@@ -24,7 +24,7 @@
   </div>
 </template>
 <script>
-import SidenavItem from "./SidenavItem.vue";
+import SidenavItem from "@/components/layout/side/SidenavItem.vue";
 
 export default {
   name: "SidenavList",

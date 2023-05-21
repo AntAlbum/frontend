@@ -123,7 +123,7 @@
 </template>
 
 <script>
-import AppFooter from "@/components/PageLayout/Footer.vue";
+import AppFooter from "@/components/layout/UserFooter.vue";
 import ArgonInput from "@/items/ArgonInput.vue";
 import ArgonCheckbox from "@/items/ArgonCheckbox.vue";
 import ArgonButton from "@/items/ArgonButton.vue";

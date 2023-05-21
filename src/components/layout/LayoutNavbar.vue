@@ -7,7 +7,7 @@
     data-scroll="true"
   >
     <div class="px-3 py-1 container-fluid">
-      <breadcrumbs :currentPage="currentRouteName" textWhite="text-white" />
+      <layout-page-index :currentPage="currentRouteName" textWhite="text-white"></layout-page-index>
 
       <div
         class="mt-2 collapse navbar-collapse mt-sm-0 me-md-0 me-sm-4"
@@ -164,7 +164,7 @@
   </nav>
 </template>
 <script>
-import Breadcrumbs from "../Breadcrumbs.vue";
+import LayoutPageIndex from "@/components/layout/LayoutPageIndex.vue";
 import { mapActions } from "vuex";
 
 export default {
@@ -183,7 +183,7 @@ export default {
     },
   },
   components: {
-    Breadcrumbs,
+    LayoutPageIndex
   },
   computed: {
     currentRouteName() {
