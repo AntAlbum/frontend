@@ -48,6 +48,6 @@
 
 <script>
 export default {
-  name: "app-footer",
+  name: "LayoutFooter",
 };
 </script>

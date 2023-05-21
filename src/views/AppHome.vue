@@ -3,6 +3,6 @@
 </template>
 <script>
 export default {
-  name: "dashboard-default",
+  name: "AppHome",
 };
 </script>

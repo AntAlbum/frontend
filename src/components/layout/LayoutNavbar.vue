@@ -7,7 +7,7 @@
     data-scroll="true"
   >
     <div class="px-3 py-1 container-fluid">
-      <breadcrumbs :currentPage="currentRouteName" textWhite="text-white" />
+      <layout-page-index :currentPage="currentRouteName" textWhite="text-white"></layout-page-index>
 
       <div
         class="mt-2 collapse navbar-collapse mt-sm-0 me-md-0 me-sm-4"
@@ -21,7 +21,7 @@
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
             <router-link
-              :to="{ name: 'Signin' }"
+              :to="{ name: 'signin' }"
               class="px-0 nav-link font-weight-bold text-white"
               target="_blank"
             >
@@ -164,11 +164,11 @@
   </nav>
 </template>
 <script>
-import Breadcrumbs from "../Breadcrumbs.vue";
+import LayoutPageIndex from "@/components/layout/LayoutPageIndex.vue";
 import { mapActions } from "vuex";
 
 export default {
-  name: "navbar",
+  name: "LayoutNavbar",
   data() {
     return {
       showMenu: false,
@@ -183,7 +183,7 @@ export default {
     },
   },
   components: {
-    Breadcrumbs,
+    LayoutPageIndex
   },
   computed: {
     currentRouteName() {

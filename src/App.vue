@@ -17,36 +17,35 @@ Coded by www.creative-tim.com
     v-show="this.$store.state.layout === 'landing'"
     class="landing-bg h-100 bg-gradient-primary position-fixed w-100"
   ></div>
-  <sidenav
+  <layout-sidenav
     :custom_class="this.$store.state.mcolor"
     :class="[
-      this.$store.state.isTransparent,
       this.$store.state.isRTL ? 'fixed-end' : 'fixed-start',
     ]"
     v-if="this.$store.state.showSidenav"
-  />
+  ></layout-sidenav>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
     <!-- nav -->
-    <navbar
+    <layout-navbar
       :class="[navClasses]"
       :textWhite="this.$store.state.isAbsolute ? 'text-white opacity-8' : 'text-white'"
       v-if="this.$store.state.showNavbar"
-    />
+    ></layout-navbar>
     <router-view />
-    <app-footer v-show="this.$store.state.showFooter" />
+    <layout-footer v-show="this.$store.state.showFooter"></layout-footer>
   </main>
 </template>
 <script>
-import Sidenav from "./examples/Sidenav";
-import Navbar from "@/examples/Navbars/Navbar.vue";
-import AppFooter from "@/examples/Footer.vue";
+import LayoutSidenav from "@/components/layout/LayoutSidenav.vue";
+import LayoutNavbar from "@/components/layout/LayoutNavbar.vue";
+import LayoutFooter from "@/components/layout/LayoutFooter.vue";
 
 export default {
   name: "App",
   components: {
-    Sidenav,
-    Navbar,
-    AppFooter,
+    LayoutSidenav,
+    LayoutNavbar,
+    LayoutFooter
   },
   computed: {
     navClasses() {
@@ -59,9 +58,6 @@ export default {
         "px-0 mx-4": !this.$store.state.isAbsolute,
       };
     },
-  },
-  beforeMount() {
-    this.$store.state.isTransparent = "bg-transparent";
   },
 };
 </script>

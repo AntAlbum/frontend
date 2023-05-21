@@ -1,6 +1,10 @@
 import { createStore } from "vuex";
+import userStore from "@/store/modules/userStore";
 
 export default createStore({
+  modules: {
+    userStore,
+  },
   state: {
     hideConfigButton: false,
     isPinned: true,
@@ -15,7 +19,7 @@ export default createStore({
     showNavbar: true,
     showFooter: true,
     showMain: true,
-    layout: "default"
+    layout: "default",
   },
   mutations: {
     TOGGLE_NAVIGATION_BAR(state) {
@@ -35,6 +39,6 @@ export default createStore({
   actions: {
     toggleNavbar() {
       this.commit("TOGGLE_NAVIGATION_BAR");
-    }
-  }
+    },
+  },
 });
