@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: "breadcrumbs",
+  name: "LayoutPageIndex",
   props: {
     currentPage: {
       required: true

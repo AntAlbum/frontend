@@ -119,20 +119,20 @@
       </div>
     </div>
   </main>
-  <app-footer />
+  <user-footer />
 </template>
 
 <script>
-import AppFooter from "@/components/layout/UserFooter.vue";
+import UserFooter from "@/components/user/UserFooter.vue";
 import ArgonInput from "@/items/ArgonInput.vue";
 import ArgonCheckbox from "@/items/ArgonCheckbox.vue";
 import ArgonButton from "@/items/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
 
 export default {
-  name: "signin",
+  name: "UserSignup",
   components: {
-    AppFooter,
+    UserFooter,
     ArgonInput,
     ArgonCheckbox,
     ArgonButton,

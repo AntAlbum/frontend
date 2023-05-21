@@ -73,7 +73,7 @@ import ArgonButton from "@/items/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
 
 export default {
-  name: "signin",
+  name: "UserSignin",
   components: {
     ArgonInput,
     ArgonSwitch,

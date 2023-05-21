@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-  name: "sidenav-item",
+  name: "SidenavItem",
   props: {
     url: {
       type: String,

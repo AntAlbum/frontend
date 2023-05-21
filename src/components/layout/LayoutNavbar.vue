@@ -21,7 +21,7 @@
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
             <router-link
-              :to="{ name: 'Signin' }"
+              :to="{ name: 'signin' }"
               class="px-0 nav-link font-weight-bold text-white"
               target="_blank"
             >
@@ -168,7 +168,7 @@ import LayoutPageIndex from "@/components/layout/LayoutPageIndex.vue";
 import { mapActions } from "vuex";
 
 export default {
-  name: "navbar",
+  name: "LayoutNavbar",
   data() {
     return {
       showMenu: false,

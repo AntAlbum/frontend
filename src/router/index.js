@@ -1,35 +1,40 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AppHome from "@/views/AppHome.vue";
-import Signup from "@/views/Signup.vue";
-import Signin from "@/views/Signin.vue";
 
 const routes = [
-    {
-        path: "/",
-        name: "/",
-        redirect: "/home",
-    },
-    {
-        path: "/home",
-        name: "home",
-        component: AppHome,
-    },
-    {
-        path: "/signin",
-        name: "Signin",
-        component: Signin,
-    },
-    {
-        path: "/signup",
-        name: "Signup",
-        component: Signup,
-    },
+  {
+    path: "/",
+    name: "/",
+    redirect: "/home",
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: AppHome,
+  },
+  {
+    path: "/user",
+    name: "user",
+    component: () => import(/* webpackChunkName: "user" */ "@/views/AppUser"),
+    children: [
+      {
+        path: "signup",
+        name: "signup",
+        component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserSignup"),
+      },
+      {
+        path: "signin",
+        name: "signin",
+        component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserSignin"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
-    routes,
-    linkActiveClass: "active",
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+  linkActiveClass: "active",
 });
 
 export default router;
