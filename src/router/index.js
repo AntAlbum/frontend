@@ -33,16 +33,16 @@ const routes = [
     path: "/travel",
     name: "travel",
     component: () => import(/* webpackChunkName: "travel" */ "@/views/AppTravel"),
-    redirect: "/travel/list",
+    redirect: "/travel/create",
     children: [
       {
         path: "mylist",
-        name: "travelmylist",
+        name: "MyTravel",
         component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelList"),
       },
       {
         path: "taggedlist",
-        name: "traveltaggedlist",
+        name: "TaggedTravel",
         component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelList"),
       },
       {

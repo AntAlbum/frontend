@@ -22,8 +22,8 @@
       </li>
       <li class="nav-item">
         <sidenav-list-item
-          url="/travel/mylist"
-          :class="getRoute() === 'travelmylist' ? 'active' : ''"
+          url="/travel/create"
+          :class="getRoute() === 'MyTravel' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'MyTravel'"
         >
           <template v-slot:icon>
@@ -33,8 +33,8 @@
       </li>
       <li class="nav-item">
         <sidenav-list-item
-          url="/travel/taggedlist"
-          :class="getRoute() === 'traveltaggedlist' ? 'active' : ''"
+          url="/travel/modify"
+          :class="getRoute() === 'TaggedTravel' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'TaggedTravel'"
         >
           <template v-slot:icon>
