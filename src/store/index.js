@@ -1,9 +1,11 @@
 import { createStore } from "vuex";
 import userStore from "@/store/modules/userStore";
+import travelStore from "@/store/modules/travelStore";
 
 export default createStore({
   modules: {
     userStore,
+    travelStore,
   },
   state: {
     hideConfigButton: false,

@@ -29,6 +29,41 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/travel",
+    name: "travel",
+    component: () => import(/* webpackChunkName: "travel" */ "@/views/AppTravel"),
+    redirect: "/travel/list",
+    children: [
+      {
+        path: "mylist",
+        name: "travelmylist",
+        component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelList"),
+      },
+      {
+        path: "taggedlist",
+        name: "traveltaggedlist",
+        component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelList"),
+      },
+      {
+        path: "create",
+        name: "travelcreate",
+        component: () =>
+          import(/* webpackChunkName: "travel" */ "@/components/travel/TravelCreate"),
+      },
+      {
+        path: "view/:travelno",
+        name: "travelview",
+        component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelView"),
+      },
+      {
+        path: "modify",
+        name: "travelmodify",
+        component: () =>
+          import(/* webpackChunkName: "travel" */ "@/components/travel/TravelModify"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
