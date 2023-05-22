@@ -22,7 +22,7 @@
       </li>
       <li class="nav-item">
         <sidenav-list-item
-          url="/travel/create"
+          url="/travel/mylist"
           :class="getRoute() === 'MyTravel' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'MyTravel'"
         >

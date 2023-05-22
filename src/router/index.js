@@ -33,7 +33,7 @@ const routes = [
     path: "/travel",
     name: "travel",
     component: () => import(/* webpackChunkName: "travel" */ "@/views/AppTravel"),
-    redirect: "/travel/create",
+    redirect: "/travel/mylist",
     children: [
       {
         path: "mylist",
