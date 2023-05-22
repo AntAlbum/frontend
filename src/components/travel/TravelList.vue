@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import TravelListItem from "./item/TravelListItem.vue";
+import TravelListItem from "@/components/travel/item/TravelListItem.vue";
 
 export default {
   name: "TravelList",

@@ -1,40 +1,35 @@
 <template>
   <div class="col-lg-3 col-md-6 col-12">
-    <!-- <card
-      :title="stats.money.title"
-      :value="stats.money.value"
-      :percentage="stats.money.percentage"
-      :iconClass="stats.money.iconClass"
-      :iconBackground="stats.money.iconBackground"
-      :detail="stats.money.detail"
-      directionReverse
-    ></card> -->
-    <travel-card></travel-card>
+    <div class="mb-4 card">
+      <div class="p-3 card-body">
+        <div class="d-flex" style="margin-bottom: 12px">
+          <div class="cropping border-radius-lg">
+            <img src="@/assets/img/team-1.jpg" alt="profile_image" class="shadow-sm w-100" />
+          </div>
+        </div>
+        <div :class="contentClass">
+          <div class="numbers">
+            <p class="mb-0 text-sm" style="margin-bottom: 5px">Feb. 2023 ~ Mar. 2023</p>
+            <h5 class="font-weight-bolder" :class="valueColor">제주도 여행</h5>
+            동기들과 떠나는 즐거운 제주도 여행~
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-// import Card from "@/components/travel/Cards/Card.vue";
-import TravelCard from "@/components/travel/item/TravelCard.vue";
-
 export default {
   name: "TravelListItem",
-  data() {
-    return {
-      stats: {
-        money: {
-          title: "Today's Money",
-          value: "$53,000",
-          percentage: "+55%",
-          iconClass: "ni ni-money-coins",
-          detail: "since yesterday",
-          iconBackground: "bg-gradient-primary",
-        },
-      },
-    };
-  },
-  components: {
-    // Card,
-    TravelCard,
-  },
 };
 </script>
+<style scoped>
+.cropping {
+  max-height: 150px;
+  overflow: hidden;
+}
+
+.cropping img {
+  max-height: initial;
+}
+</style>
