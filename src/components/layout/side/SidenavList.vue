@@ -42,6 +42,17 @@
           </template>
         </sidenav-list-item>
       </li>
+      <li class="nav-item">
+        <sidenav-list-item
+          url="/travel/view"
+          :class="getRoute() === 'View Travel' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'View Travel'"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
+          </template>
+        </sidenav-list-item>
+      </li>
     </ul>
   </div>
 </template>
