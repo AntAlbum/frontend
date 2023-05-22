@@ -10,7 +10,7 @@
         <div class="numbers">
           <p class="mb-1 text-sm">Feb. 2023 ~ Mar. 2023</p>
           <h5 class="font-weight-bolder" :class="valueColor">제주도 여행</h5>
-          동기들과 떠나는 즐거운 제주도 여행~
+          동기들과 떠나는 즐거운 제주도 여행~dfa sdafds af daf asdfadfasdfa dsfa sdfasdfasdfadsfa sdfa dsfa s
         </div>
       </div>
     </div>
