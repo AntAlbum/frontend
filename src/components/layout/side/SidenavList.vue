@@ -23,8 +23,8 @@
       <li class="nav-item">
         <sidenav-list-item
           url="/travel/mylist"
-          :class="getRoute() === 'MyTravel' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'MyTravel'"
+          :class="getRoute() === 'My Travels' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'My Travels'"
         >
           <template v-slot:icon>
             <i class="ni ni-world text-info text-sm opacity-10"></i>
