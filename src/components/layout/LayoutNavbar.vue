@@ -27,7 +27,7 @@
               
             >
               <i class="fa fa-user" :class="this.$store.state.isRTL ? 'ms-sm-2' : 'me-sm-2'"></i>
-              <span v-if="this.$store.state.isRTL" class="d-sm-inline d-none">يسجل دخول</span>
+              <span v-if="this.$store.state.userInfo" class="d-sm-inline d-none">{{this.$store.state.userInfo}}님 안녕하세요</span>
               <span v-else class="d-sm-inline d-none">Sign In</span>
             </router-link>
           </li>
@@ -167,7 +167,6 @@
 <script>
 import LayoutPageIndex from "@/components/layout/LayoutPageIndex.vue";
 
-import jwtDecode from "jwt-decode";
 
 import { mapActions } from "vuex";
 
@@ -177,6 +176,7 @@ export default {
   data() {
     return {
       showMenu: false,
+      userInfo: "",
     };
   },
   props: ["textWhite"],
@@ -186,14 +186,17 @@ export default {
     toggleSidebar() {
       this.toggleNavbar();
     },
+
   },
-  created() {
-    let token = null;
-    if(sessionStorage.getItem("access-token")) {
-      token = sessionStorage.getItem("access-token");
-      let decodeToken = jwtDecode(token);
-      console.log(decodeToken);
+  updated() {
+    if(this.$store.userInfo) {
+      this.userInfo = this.$store.userInfo;
     }
+    console.log(this.userInfo);
+
+    this.$nextTick(function () {
+        console.log('제발요 ㅜㅜㅠㅠ',this.userinfo);
+      })
   
   },
   components: {

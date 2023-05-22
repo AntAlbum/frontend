@@ -19,9 +19,7 @@ Coded by www.creative-tim.com
   ></div>
   <layout-sidenav
     :custom_class="this.$store.state.mcolor"
-    :class="[
-      this.$store.state.isRTL ? 'fixed-end' : 'fixed-start',
-    ]"
+    
     v-if="this.$store.state.showSidenav"
   ></layout-sidenav>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
@@ -42,6 +40,8 @@ import LayoutFooter from "@/components/layout/LayoutFooter.vue";
 
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+
+import { mapMutations } from "vuex";
 
 export default {
   name: "App",
@@ -74,13 +74,21 @@ export default {
   },
 
   methods: {
+    ...mapMutations["UPDATE_USERINFO"],
+
+
+
+
+
     async getUser (userid) {
           let username;
           const response = await axios.get(`http://localhost:9999/user/${userid}`);
-          username = response.data.sub;
+          username = response.data.nickname;
           console.log(username);
-          this.$store.state.userInfo = username;
-          console.log(this.$store.state.userInfo);
+
+          // this.$store.state.userInfo = username;
+          this.$store.commit("UPDATE_USERINFO", username);
+          console.log("g하이",this.$store.state.userInfo);
       }
   },
 
