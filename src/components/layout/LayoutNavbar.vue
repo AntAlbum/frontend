@@ -1,3 +1,4 @@
+
 <template>
   <nav
     class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
@@ -23,7 +24,7 @@
             <router-link
               :to="{ name: 'signin' }"
               class="px-0 nav-link font-weight-bold text-white"
-              target="_blank"
+              
             >
               <i class="fa fa-user" :class="this.$store.state.isRTL ? 'ms-sm-2' : 'me-sm-2'"></i>
               <span v-if="this.$store.state.isRTL" class="d-sm-inline d-none">يسجل دخول</span>
@@ -165,7 +166,11 @@
 </template>
 <script>
 import LayoutPageIndex from "@/components/layout/LayoutPageIndex.vue";
+
+import jwtDecode from "jwt-decode";
+
 import { mapActions } from "vuex";
+
 
 export default {
   name: "LayoutNavbar",
@@ -176,11 +181,20 @@ export default {
   },
   props: ["textWhite"],
   methods: {
-    ...mapActions(["toggleNavbar"]),
+    ...mapActions(["toggleNavbar", "getUserInfo"]),
 
     toggleSidebar() {
       this.toggleNavbar();
     },
+  },
+  created() {
+    let token = null;
+    if(sessionStorage.getItem("access-token")) {
+      token = sessionStorage.getItem("access-token");
+      let decodeToken = jwtDecode(token);
+      console.log(decodeToken);
+    }
+  
   },
   components: {
     LayoutPageIndex
