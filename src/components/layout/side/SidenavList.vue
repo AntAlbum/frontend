@@ -2,7 +2,7 @@
   <div class="collapse navbar-collapse w-auto h-auto h-100" id="sidenav-collapse-main">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <sidenav-item
+        <sidenav-list-item
           url="/home"
           :class="getRoute() === 'home' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'لوحة القيادة' : 'Home'"
@@ -10,7 +10,7 @@
           <template v-slot:icon>
             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
           </template>
-        </sidenav-item>
+        </sidenav-list-item>
       </li>
       <li class="mt-3 nav-item">
         <h6
@@ -20,11 +20,33 @@
           Travel
         </h6>
       </li>
+      <li class="nav-item">
+        <sidenav-list-item
+          url="/travel/mylist"
+          :class="getRoute() === 'My Travels' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'My Travels'"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-world text-info text-sm opacity-10"></i>
+          </template>
+        </sidenav-list-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-list-item
+          url="/travel/taggedlist"
+          :class="getRoute() === 'Tagged Travel' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Tagged Travel'"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
+          </template>
+        </sidenav-list-item>
+      </li>
     </ul>
   </div>
 </template>
 <script>
-import SidenavItem from "@/components/layout/side/SidenavItem.vue";
+import SidenavListItem from "@/components/layout/side/SidenavListItem.vue";
 
 export default {
   name: "SidenavList",
@@ -39,7 +61,7 @@ export default {
     };
   },
   components: {
-    SidenavItem,
+    SidenavListItem,
   },
   methods: {
     getRoute() {
