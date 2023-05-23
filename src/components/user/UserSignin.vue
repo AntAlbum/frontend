@@ -13,10 +13,10 @@
                 <div class="card-body">
                   <form role="form">
                     <div class="mb-3">
-                      <argon-input type="email" placeholder="Email" name="email" size="lg" />
+                      <argon-input type="email" placeholder="Email" name="email" size="lg" v-model="user.useremail" />
                     </div>
                     <div class="mb-3">
-                      <argon-input type="password" placeholder="Password" name="password" size="lg" />
+                      <argon-input type="password" placeholder="Password" name="password" size="lg"  v-model="user.userpwd" />
                     </div>
                     <argon-switch id="rememberMe">Remember me</argon-switch>
 
@@ -29,7 +29,15 @@
                         size="lg"
                       >Sign in</argon-button>
                     </div>
+
                   </form>
+
+                  <div class="mb-2">
+                    <a href="http://localhost:9999/oauth2/authorization/google">
+                      <img src="@/assets/img/google.png" >
+                      <b-img src="@/assets/img/google2.png" fluid alt="Responsive image"></b-img>
+                    </a>
+                  </div>
                 </div>
                 <div class="px-1 pt-0 text-center card-footer px-lg-2">
                   <p class="mx-auto mb-4 text-sm">
@@ -67,19 +75,66 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
+const memberStore = "memberStore";
+
 import ArgonInput from "@/items/ArgonInput.vue";
 import ArgonSwitch from "@/items/ArgonSwitch.vue";
 import ArgonButton from "@/items/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
 
+
 export default {
   name: "UserSignin",
+  data() {
+    return {
+      // isLoginError: false,
+      user: {
+        useremail: null,
+        userpwd: null,
+      },
+      accessToken: "",
+    };
+  },
+  computed: {
+    ...mapState(memberStore, ["isLogin", "isLoginError", "userInfo"]),
+
+  },
   components: {
     ArgonInput,
     ArgonSwitch,
     ArgonButton,
   },
+  methods: {
+    ...mapActions(memberStore, ["userConfirm", "getUserInfo"]),
+    async confirm() {
+      await this.userConfirm(this.user);
+      let token = sessionStorage.getItem("access-token");
+      // console.log("1. confirm() token >> " + token);
+      if (this.isLogin) {
+        await this.getUserInfo(token);
+        // console.log("4. confirm() userInfo :: ", this.userInfo);
+        this.$router.push({ name: "main" });
+      }
+    },
+    movePage() {
+      this.$router.push({ name: "join" });
+    },
+  },
   created() {
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const accessToken = urlParams.get('token');
+
+    // console.log(urlParams, accessToken);
+    
+    // // 추출한 액세스 토큰을 세션 스토리지에 저장합니다
+    // sessionStorage.setItem('access_token', accessToken);
+    
+    // // 데이터를 컴포넌트에 설정합니다
+    // this.accessToken = accessToken;
+
+
     this.$store.state.hideConfigButton = true;
     this.$store.state.showNavbar = false;
     this.$store.state.showSidenav = false;

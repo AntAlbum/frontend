@@ -1,3 +1,4 @@
+
 <template>
   <nav
     class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
@@ -23,10 +24,10 @@
             <router-link
               :to="{ name: 'signin' }"
               class="px-0 nav-link font-weight-bold text-white"
-              target="_blank"
+              
             >
               <i class="fa fa-user" :class="this.$store.state.isRTL ? 'ms-sm-2' : 'me-sm-2'"></i>
-              <span v-if="this.$store.state.isRTL" class="d-sm-inline d-none">يسجل دخول</span>
+              <span v-if="this.$store.state.userInfo" class="d-sm-inline d-none">{{this.$store.state.userInfo}}님 안녕하세요</span>
               <span v-else class="d-sm-inline d-none">Sign In</span>
             </router-link>
           </li>
@@ -165,22 +166,38 @@
 </template>
 <script>
 import LayoutPageIndex from "@/components/layout/LayoutPageIndex.vue";
+
+
 import { mapActions } from "vuex";
+
 
 export default {
   name: "LayoutNavbar",
   data() {
     return {
       showMenu: false,
+      userInfo: "",
     };
   },
   props: ["textWhite"],
   methods: {
-    ...mapActions(["toggleNavbar"]),
+    ...mapActions(["toggleNavbar", "getUserInfo"]),
 
     toggleSidebar() {
       this.toggleNavbar();
     },
+
+  },
+  updated() {
+    if(this.$store.userInfo) {
+      this.userInfo = this.$store.userInfo;
+    }
+    console.log(this.userInfo);
+
+    this.$nextTick(function () {
+        console.log('제발요 ㅜㅜㅠㅠ',this.userinfo);
+      })
+  
   },
   components: {
     LayoutPageIndex
