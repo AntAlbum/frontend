@@ -22,8 +22,19 @@ export default createStore({
     showFooter: true,
     showMain: true,
     layout: "default",
+
+    userInfo: "",
+  },
+  getters: {
+    getUserInfo(){
+      return this.$store.state.userinfo;
+    }
   },
   mutations: {
+    UPDATE_USERINFO(state, userInfo) {
+      state.userInfo = userInfo;
+    },
+
     TOGGLE_NAVIGATION_BAR(state) {
       const sidenav_show = document.querySelector(".g-sidenav-show");
 
