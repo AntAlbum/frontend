@@ -42,7 +42,7 @@ const routes = [
       },
       {
         path: "taggedlist",
-        name: "TaggedTravel",
+        name: "Tagged Travel",
         component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelList"),
       },
       {

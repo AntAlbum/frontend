@@ -7,8 +7,8 @@
             <h6 class="font-weight-bolder">My Travels</h6>
             <p class="text-sm">Look around where you've been through the world!</p>
             <div class="row">
-              <div class="col-lg-3 col-md-6 col-12" v-for="(travel, index) in travels" :key="index">
-                <travel-list-item :travel="travel"></travel-list-item>
+              <div class="col-lg-3 col-md-6 col-12 custom-mouse" v-for="(travel, index) in travels" :key="index">
+                <travel-list-item @click="moveToView" :travel="travel"></travel-list-item>
               </div>
               <div class="col-lg-3 col-md-6 col-12 vertical-align-content">
                 <travel-list-create @Click="moveToCreate"></travel-list-create>
@@ -67,6 +67,9 @@ export default {
     TravelListCreate,
   },
   methods: {
+    moveToView() {
+      this.$router.push({ name: "travelview" });
+    },
     moveToCreate() {
       this.$router.push({ name: "travelcreate" });
     }
@@ -74,6 +77,9 @@ export default {
 };
 </script>
 <style scoped>
+.custom-mouse:hover {
+  cursor: pointer;
+}
 .vertical-align-content {
   display:flex;
   align-items:center;

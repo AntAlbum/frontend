@@ -33,20 +33,9 @@
       </li>
       <li class="nav-item">
         <sidenav-list-item
-          url="/travel/modify"
-          :class="getRoute() === 'TaggedTravel' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'TaggedTravel'"
-        >
-          <template v-slot:icon>
-            <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
-          </template>
-        </sidenav-list-item>
-      </li>
-      <li class="nav-item">
-        <sidenav-list-item
-          url="/travel/view"
-          :class="getRoute() === 'View Travel' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'View Travel'"
+          url="/travel/taggedlist"
+          :class="getRoute() === 'Tagged Travel' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Tagged Travel'"
         >
           <template v-slot:icon>
             <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>

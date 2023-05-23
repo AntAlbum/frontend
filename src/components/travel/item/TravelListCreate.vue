@@ -45,6 +45,7 @@ export default {
   background: #fff;
   color: #2dce89;
   border:.2rem solid #2dce89;
+  cursor: pointer;
 }
 .image-upload > svg {
   height: 1.5rem;
