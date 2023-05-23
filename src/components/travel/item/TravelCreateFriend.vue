@@ -18,5 +18,10 @@ export default {
   components: {
     ArgonButton,
   },
+  data() {
+    return {
+      friends: [],
+    };
+  },
 };
 </script>

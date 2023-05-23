@@ -6,11 +6,13 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
-  name: "TravelListItem2",
+  name: "TravelListCreate",
 };
 </script>
+
 <style scoped>
 .custom-color {
   color: #777777;
@@ -44,7 +46,7 @@ export default {
 .image-upload:hover {
   background: #fff;
   color: #2dce89;
-  border:.2rem solid #2dce89;
+  border: 0.2rem solid #2dce89;
   cursor: pointer;
 }
 .image-upload > svg {
