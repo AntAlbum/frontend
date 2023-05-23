@@ -23,12 +23,6 @@ export default createStore({
     showMain: true,
     layout: "default",
 
-    userInfo: "",
-  },
-  getters: {
-    getUserInfo(){
-      return this.$store.state.userinfo;
-    }
   },
   mutations: {
     UPDATE_USERINFO(state, userInfo) {

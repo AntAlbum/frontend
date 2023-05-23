@@ -188,17 +188,6 @@ export default {
     },
 
   },
-  updated() {
-    if(this.$store.userInfo) {
-      this.userInfo = this.$store.userInfo;
-    }
-    console.log(this.userInfo);
-
-    this.$nextTick(function () {
-        console.log('제발요 ㅜㅜㅠㅠ',this.userinfo);
-      })
-  
-  },
   components: {
     LayoutPageIndex
   },

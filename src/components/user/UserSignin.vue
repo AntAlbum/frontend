@@ -123,18 +123,6 @@ export default {
     },
   },
   created() {
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const accessToken = urlParams.get('token');
-
-    // console.log(urlParams, accessToken);
-    
-    // // 추출한 액세스 토큰을 세션 스토리지에 저장합니다
-    // sessionStorage.setItem('access_token', accessToken);
-    
-    // // 데이터를 컴포넌트에 설정합니다
-    // this.accessToken = accessToken;
-
-
     this.$store.state.hideConfigButton = true;
     this.$store.state.showNavbar = false;
     this.$store.state.showSidenav = false;
