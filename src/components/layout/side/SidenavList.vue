@@ -35,18 +35,30 @@
         <sidenav-list-item
           url="/travel/taggedlist"
           :class="getRoute() === 'Tagged Travel' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Tagged Travel'"
+          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Tagged Travel'" 
         >
           <template v-slot:icon>
             <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
           </template>
         </sidenav-list-item>
+
+        <sidenav-list-item
+          url="/attraction/attractionlist"
+          :class="getRoute() === 'Attraction List' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Attraction List'"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
+          </template>
+        </sidenav-list-item>
+
+        
       </li>
     </ul>
   </div>
 </template>
 <script>
-import SidenavListItem from "@/components/layout/side/SidenavListItem.vue";
+import SidenavListItem from "@/components/layout/side/SidenavListItem.vue"; 
 
 export default {
   name: "SidenavList",

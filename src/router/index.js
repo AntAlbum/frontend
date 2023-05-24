@@ -64,6 +64,24 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/attraction",
+    name: "attraction",
+    component: () => import(/* webpackChunkName: "travel" */ "@/views/AppAttraction"),
+    redirect: "/attraction/attractionlist",
+    children: [
+      {
+        path: "attractionlist",
+        name: "Attraction List",
+        component: () => import(/* webpackChunkName: "attraction" */ "@/components/attraction/AttractionList"),
+      },
+      {
+        path: "view",
+        name: "attractionview",
+        component: () => import(/* webpackChunkName: "attraction" */ "@/components/attraction/AttractionView"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
