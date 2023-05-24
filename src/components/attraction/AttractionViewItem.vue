@@ -1,6 +1,6 @@
 <template>
   <div class="card-profile">
-    <img class="height:300px" :src="`${this.attraction.firstImage}`" alt="Image placeholder" />
+    <img :src="`${this.attraction.firstImage}`" alt="no image available" onerror="this.src = 'https://komisiinformasi.bantenprov.go.id/frontend/29/assets/img/no_image.png?v=1474558838'" />
     
     <div class="back">
       <div class="py-4 container-fluid">
@@ -9,6 +9,10 @@
             <div class="mt-4">
               <h5 class="font-weight-bolder" style="margin-top: 5px">{{this.attraction.title}}</h5>
               address: {{this.attraction.addr1}}
+            </div>
+
+            <div class="mt-4">
+              contact : {{this.attraction.tel}}
             </div>
           </div>
           
@@ -22,10 +26,7 @@
                 <span class="text-lg font-weight-bolder">{{this.attraction.readCount}}</span>
                 <span class="text-sm opacity-8">조회수</span>
               </div>
-              <div class="d-grid text-center mx-4">
-                <span class="text-lg font-weight-bolder">200</span>
-                <span class="text-sm opacity-8">Photos</span>
-              </div>
+              
             </div>
           </div>
         </div>
