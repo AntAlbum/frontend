@@ -10,9 +10,10 @@
         :class="getClasses(size, valid)"
         :name="name"
         :id="id"
-        :value="value"
+        :value="modelValue"
         :placeholder="placeholder"
         :isRequired="isRequired"
+        v-on="listeners"
       />
       <span v-if="iconDir === 'right'" class="input-group-text">
         <i :class="getIcon(icon)"></i>
@@ -41,8 +42,20 @@ export default {
     placeholder: String,
     type: String,
     isRequired: Boolean,
+    modelValue: String,
+  },
+  computed: {
+    listeners() {
+      return {
+        input: this.updateValue,
+      };
+    },
   },
   methods: {
+    updateValue(event) {
+      let value = event.target.value;
+      this.$emit("update:modelValue", value);
+    },
     getClasses: (size, valid) => {
       let sizeValue, isValidValue;
 
