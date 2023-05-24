@@ -23,6 +23,11 @@ export default createStore({
     showMain: true,
     layout: "default",
 
+    attractions:[],
+    sidoCode:null,
+    condition:null,
+    keyword:null,
+
   },
   mutations: {
     UPDATE_USERINFO(state, userInfo) {

@@ -6,6 +6,7 @@
           <div class="card-body">
             <h6 class="font-weight-bolder">Find hot place</h6>
             <p class="text-sm">Look around where to go later</p>
+            <attraction-search-bar @search-condition="updateAttractions"></attraction-search-bar>
             <div class="row">
               <div class="col-lg-3 col-md-6 col-12 custom-mouse" v-for="(attraction, index) in attractions" :key="index">
                 <attraction-list-item @click="moveToView(attraction)" :attraction="attraction"></attraction-list-item>
@@ -20,16 +21,19 @@
 <script>
 import AttractionListItem from "@/components/attraction/AttractionListItem.vue";
 import axios from 'axios';
+import AttractionSearchBar from './AttractionSearchBar.vue';
 
 export default {
   name: "AttractionList",
   data() {
     return {
+      condition: null,
       attractions: [],
     };
   },
   components: {
     AttractionListItem,
+    AttractionSearchBar,
   },
   methods: {
     moveToView(attraction) {
@@ -42,12 +46,39 @@ export default {
       axios.get('http://localhost:9999/attraction')
             .then((response) => {
               this.attractions = response.data;
-              console.log('attractions : ', response.data);
+              // console.log('attractions : ', response.data);
             })
+    },
+
+    updateAttractions(sidoCode, category, keyword) {
+      this.attractions = [];
+      let condition = {
+        sidoCode,
+        category,
+        keyword
+      }
+      this.condition = condition;
+      console.log('search param >>>', condition)
+      axios.post('http://localhost:9999/attraction/condition', condition)
+            .then((response) => {
+              this.attractions = response.data;
+              // console.log('attractions : ', response.data);
+              this.$store.state.attractions = response.data;
+            })
+
+      this.$store.state.attractions = this.attractions;
     },
   },
   created() {
-    this.getAttractions();
+    if(this.$store.state.attractions.length===0) {
+      console.log("if null >>>", this.$store.state.attractions)
+      this.getAttractions();
+    }
+    else {
+      // this.updateAttractions(this.condition);
+      this.attractions = this.$store.state.attractions;
+      console.log("if not null >>>", this.condition)
+    }
   },
 };
 </script>
