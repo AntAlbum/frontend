@@ -63,7 +63,7 @@ export default {
       createTravelInfo(
         travel,
         ({ data }) => {
-          images.append("id", data.id);
+          images.set("id", data.id);
 
           addTravelPhoto(
             images,
