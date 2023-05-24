@@ -1,17 +1,51 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from "vuex";
+import userStore from "@/store/modules/userStore";
+import travelStore from "@/store/modules/travelStore";
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  state: {
+export default createStore({
+  modules: {
+    userStore,
+    travelStore,
   },
-  getters: {
+  state: {
+    hideConfigButton: false,
+    isPinned: true,
+    sidebarType: "bg-white",
+    isRTL: false,
+    mcolor: "",
+    darkMode: false,
+    isNavFixed: false,
+    isAbsolute: false,
+    showNavs: true,
+    showSidenav: true,
+    showNavbar: true,
+    showFooter: true,
+    showMain: true,
+    layout: "default",
+
   },
   mutations: {
+    UPDATE_USERINFO(state, userInfo) {
+      state.userInfo = userInfo;
+    },
+
+    TOGGLE_NAVIGATION_BAR(state) {
+      const sidenav_show = document.querySelector(".g-sidenav-show");
+
+      if (sidenav_show.classList.contains("g-sidenav-hidden")) {
+        sidenav_show.classList.remove("g-sidenav-hidden");
+        sidenav_show.classList.add("g-sidenav-pinned");
+        state.isPinned = true;
+      } else {
+        sidenav_show.classList.add("g-sidenav-hidden");
+        sidenav_show.classList.remove("g-sidenav-pinned");
+        state.isPinned = false;
+      }
+    },
   },
   actions: {
+    toggleNavbar() {
+      this.commit("TOGGLE_NAVIGATION_BAR");
+    },
   },
-  modules: {
-  }
-})
+});

@@ -1,33 +1,93 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import AppMain from "@/views/AppMain";
-import AppTravel from "@/views/AppTravel";
-import AppUser from "@/views/AppUser";
-
-Vue.use(VueRouter)
+import { createRouter, createWebHistory } from "vue-router";
+import AppHome from "@/views/AppHome.vue";
 
 const routes = [
   {
     path: "/",
-    name: "main",
-    component: AppMain,
+    name: "/",
+    redirect: "/home",
   },
   {
-    path: "/travel",
-    name: "travel",
-    component: AppTravel,
+    path: "/home",
+    name: "home",
+    component: AppHome,
   },
   {
     path: "/user",
     name: "user",
-    component: AppUser,
+    component: () => import(/* webpackChunkName: "user" */ "@/views/AppUser"),
+    children: [
+      {
+        path: "signup",
+        name: "signup",
+        component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserSignup"),
+      },
+      {
+        path: "signin",
+        name: "signin",
+        component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserSignin"),
+      },
+    ],
   },
-]
+  {
+    path: "/travel",
+    name: "travel",
+    component: () => import(/* webpackChunkName: "travel" */ "@/views/AppTravel"),
+    redirect: "/travel/mylist",
+    children: [
+      {
+        path: "mylist",
+        name: "My Travels",
+        component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelList"),
+      },
+      {
+        path: "taggedlist",
+        name: "Tagged Travel",
+        component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelList"),
+      },
+      {
+        path: "create",
+        name: "travelcreate",
+        component: () =>
+          import(/* webpackChunkName: "travel" */ "@/components/travel/TravelCreate"),
+      },
+      {
+        path: "view",
+        name: "travelview",
+        component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelView"),
+      },
+      {
+        path: "modify",
+        name: "travelmodify",
+        component: () =>
+          import(/* webpackChunkName: "travel" */ "@/components/travel/TravelModify"),
+      },
+    ],
+  },
+  {
+    path: "/attraction",
+    name: "attraction",
+    component: () => import(/* webpackChunkName: "travel" */ "@/views/AppAttraction"),
+    redirect: "/attraction/attractionlist",
+    children: [
+      {
+        path: "attractionlist",
+        name: "Attraction List",
+        component: () => import(/* webpackChunkName: "attraction" */ "@/components/attraction/AttractionList"),
+      },
+      {
+        path: "view",
+        name: "attractionview",
+        component: () => import(/* webpackChunkName: "attraction" */ "@/components/attraction/AttractionView"),
+      },
+    ],
+  },
+];
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+  linkActiveClass: "active",
+});
 
-export default router
+export default router;
