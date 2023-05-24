@@ -2,7 +2,7 @@
   <div class="py-4 container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <attraction-view-item></attraction-view-item>
+        <attraction-view-item :attraction="this.attraction"></attraction-view-item>
       </div>
     </div>
   </div>
@@ -17,12 +17,15 @@ export default {
   },
   data() {
     return {
-      attraction: this.$route.params.attraction
+      attraction:{}
     }
   },
   created() {
-    console.log('attractionView >>>', this.attraction);
-    console.log('attractionView parse >>>', JSON.parse(this.attraction));
+  console.log('before parsing >>>', this.$route.params.attraction);
+  this.attraction = JSON.parse(this.$route.params.attraction);
+  console.log('after parse >>>', this.attraction);
   }
+
+
 };
 </script>

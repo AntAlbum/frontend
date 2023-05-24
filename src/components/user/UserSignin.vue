@@ -34,7 +34,7 @@
 
                   <div class="mb-2">
                     <a href="http://localhost:9999/oauth2/authorization/google">
-                      <img src="@/assets/img/google.png" >
+                      <img style="width:50; height:20" src="@/assets/img/google2.png" >
                       <b-img src="@/assets/img/google2.png" fluid alt="Responsive image"></b-img>
                     </a>
                   </div>
