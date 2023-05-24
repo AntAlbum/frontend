@@ -1,21 +1,21 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <p class="text-sm">search condition</p>
+      <p class="text-sm">Enter the conditions for the tourist attractions that are appropriate for you!</p>
       <div class="row">
         <p class="col-md-12">
-          <select v-model="sidoCode">
+          <select v-model="sidoCode" style="width: 100%; border: 1px solid #ddd; border-radius: 5px; background-color: #fff; padding: 10px; font-size: 16px; color: #333; ">
             <option v-for="sido in sidoCodes" :value="sido.value" :key="sido.value">{{ sido.text }}</option>
           </select>
         </p>
         <p class="col-md-12">
-          <select v-model="category">
+          <select v-model="category" style="width: 100%; border: 1px solid #ddd; border-radius: 5px; background-color: #fff; padding: 10px; font-size: 16px; color: #333; ">
             <option v-for="category in cateories" :value="category.value" :key="category.value">{{ category.text }}</option>
           </select>
         </p>
 
         <div class="col-md-12">
-          <argon-input type="text" v-model="keyword" placeholder="keyword" />
+          <argon-input type="text" v-model="keyword" placeholder="please enter a keyword" />
           <argon-button color="success" size="sm" variant="outline" @click="changeCondition">search</argon-button>
         
         </div>
@@ -44,7 +44,7 @@ export default {
         keyword:"",
 
       sidoCodes: [
-        { value: 0, text: '시/도' },
+        { value: 0, text: 'select city or province' },
         { value: 1, text: '서울' },
         { value: 2, text: '인천' },
         { value: 3, text: '대전' },
@@ -65,7 +65,7 @@ export default {
       ],
 
       cateories: [
-        { value: 0, text: '컨텐츠 타입' },
+        { value: 0, text: 'select content type' },
         { value: 12, text: '관광지' },
         { value: 14, text: '문화시설' },
         { value: 15, text: '축제공연행사' },
