@@ -1,8 +1,5 @@
 <template>
-  <travel-create-head
-    @cancel-creation="cancelCreation"
-    @create-tavel="createTravel"
-  ></travel-create-head>
+  <travel-create-head @cancel-creation="cancelCreation" @create-tavel="create"></travel-create-head>
   <div class="py-4 container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -30,7 +27,7 @@ import TravelCreateInfo from "@/components/travel/item/TravelCreateInfo";
 import TravelCreateFriend from "@/components/travel/item/TravelCreateFriend";
 import TravelCreatePhoto from "@/components/travel/item/TravelCreatePhoto.vue";
 
-import { createTravel, uploadPhoto } from "@/api/travel";
+import { createTravelInfo, addTravelPhoto } from "@/api/travel";
 
 const body = document.getElementsByTagName("body")[0];
 
@@ -59,30 +56,19 @@ export default {
     cancelCreation() {
       this.$router.push({ name: "My Travels" });
     },
-    createTravel() {
-      this.travel = this.$refs.info.travel;
-      this.friends = this.$refs.friend.friends;
-      this.images = this.$refs.photo.images;
+    create() {
+      const travel = this.$refs.info.travel;
+      const images = this.$refs.photo.files;
 
-      createTravel(
-        this.travel,
+      createTravelInfo(
+        travel,
         ({ data }) => {
-          this.id = data.id;
+          images.append("id", data.id);
 
-          const formData = new FormData();
-          formData.append("file", this.images[0].origin);
-          console.log(this.images[0].src);
-          console.log(this.images[0].size);
-          console.log(this.images[0].origin);
-          // this.images.forEach((image) => {
-          //   formData.append("files", image.origin);
-          // });
-          // formData.append("id", data.id);
-
-          uploadPhoto(
-            formData,
-            ({ data }) => {
-              console.log(data);
+          addTravelPhoto(
+            images,
+            () => {
+              console.log("success");
             },
             (error) => {
               console.log(error);
