@@ -87,6 +87,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import ArgonButton from "@/items/ArgonButton.vue";
 
@@ -97,6 +98,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .cropping {
   max-height: 300px;

@@ -32,13 +32,13 @@
             <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
               <div class="d-flex justify-content-end mb-3">
                 <a
-                  href="javascript:;"
+                  @click="cancelCreation"
                   class="btn btn-sm btn-fail mb-0 d-none d-lg-block"
                   style="margin-right: 10px"
                   >Cancel</a
                 >
                 <a
-                  href="javascript:;"
+                  @click="createTravel"
                   class="btn btn-sm btn-success float-right mb-0 d-none d-lg-block"
                   >Create</a
                 >
@@ -50,9 +50,17 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "TravelCreateInfo",
-  components: {},
+  methods: {
+    cancelCreation() {
+      this.$emit("cancel-creation");
+    },
+    createTravel() {
+      this.$emit("create-tavel");
+    },
+  },
 };
 </script>

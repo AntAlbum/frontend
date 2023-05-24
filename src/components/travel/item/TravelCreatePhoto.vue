@@ -37,25 +37,33 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "TravelCreatePhoto",
   data() {
     return {
+      files: [],
       images: [],
       totalSize: 0,
     };
   },
   methods: {
     getImagesAndPush(e) {
+      const formData = new FormData();
+
       if (e.target.files.length > 0) {
         for (let i = 0; i < e.target.files.length; i++) {
           this.images.push({
+            origin: e.target.files[i],
             src: e.target.files[i].name,
             size: e.target.files[i].size,
             blob: URL.createObjectURL(e.target.files[i]),
           });
+
+          formData.append("files", e.target.files[i]);
         }
+        this.files = formData;
       }
       this.totalFileSize();
     },
