@@ -62,6 +62,7 @@ export default {
           });
 
           formData.append("files", e.target.files[i]);
+          formData.append("names", e.target.files[i].name);
         }
         this.files = formData;
       }
