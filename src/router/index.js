@@ -15,7 +15,8 @@ const routes = [
   {
     path: "/user",
     name: "user",
-    component: () => import(/* webpackChunkName: "user" */ "@/views/AppUser"),
+    component: () => import(/* webpackChunkName: "user" */ "@/views/AppUser"), 
+    // redirect: "/user/Profile",
     children: [
       {
         path: "signup",
@@ -26,6 +27,11 @@ const routes = [
         path: "signin",
         name: "signin",
         component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserSignin"),
+      },
+      {
+        path: "profile",
+        name: "Modify Profile",
+        component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserProfile"),
       },
     ],
   },

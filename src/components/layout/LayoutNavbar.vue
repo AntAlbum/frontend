@@ -18,19 +18,28 @@
           class="pe-md-3 d-flex align-items-center"
           :class="this.$store.state.isRTL ? 'me-md-auto' : 'ms-md-auto'"
         ></div>
+
         <ul class="navbar-nav justify-content-end">
-          <li class="nav-item d-flex align-items-center">
+          <li v-if="this.$store.state.userInfo" class="nav-item d-flex align-items-center px-0 nav-link font-weight-bold text-white">
+            <span style="margin-right: 10px;"  class="d-sm-inline d-none">{{this.$store.state.userInfo}}'s album</span>
+            <span style="cursor: pointer" @click="logout" class="d-sm-inline d-none">logout</span>
+          </li>
+
+          <li v-else class="nav-item d-flex align-items-center">
             <router-link
               :to="{ name: 'signin' }"
               class="px-0 nav-link font-weight-bold text-white"
               
             >
-              <i class="fa fa-user" :class="this.$store.state.isRTL ? 'ms-sm-2' : 'me-sm-2'"></i>
-              <span v-if="this.$store.state.userInfo" class="d-sm-inline d-none">{{this.$store.state.userInfo}}님 안녕하세요</span>
-              <span v-else class="d-sm-inline d-none">Sign In</span>
+              <span  class="d-sm-inline d-none">Sign In</span>
             </router-link>
           </li>
+
+          
+
           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+            <i class="fa fa-user" :class="this.$store.state.isRTL ? 'ms-sm-2' : 'me-sm-2'"></i>
+
             <a
               href="#"
               @click="toggleSidebar"
@@ -184,6 +193,12 @@ export default {
 
     toggleSidebar() {
       this.toggleNavbar();
+    },
+
+    logout() {
+      this.$store.state.userInfo = null;
+      sessionStorage.setItem('access_token', null);
+      this.$router.push("/");
     },
 
   },

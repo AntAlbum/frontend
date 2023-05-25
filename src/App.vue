@@ -29,7 +29,9 @@ Coded by www.creative-tim.com
       :textWhite="this.$store.state.isAbsolute ? 'text-white opacity-8' : 'text-white'"
       v-if="this.$store.state.showNavbar"
     ></layout-navbar>
+
     <router-view />
+    
     <layout-footer v-show="this.$store.state.showFooter"></layout-footer>
   </main>
 </template>

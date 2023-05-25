@@ -20,6 +20,7 @@
           Travel
         </h6>
       </li>
+
       <li class="nav-item">
         <sidenav-list-item
           url="/travel/mylist"
@@ -31,6 +32,7 @@
           </template>
         </sidenav-list-item>
       </li>
+      
       <li class="nav-item">
         <sidenav-list-item
           url="/travel/taggedlist"
@@ -46,6 +48,16 @@
           url="/attraction/attractionlist"
           :class="getRoute() === 'Attraction List' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Attraction List'"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
+          </template>
+        </sidenav-list-item>
+
+        <sidenav-list-item
+          url="/user/profile"
+          :class="getRoute() === 'Modify Profile' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Modify Profile'"
         >
           <template v-slot:icon>
             <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
