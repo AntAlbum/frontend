@@ -55,7 +55,7 @@ export default {
     TravelCreatePhoto,
   },
   methods: {
-    ...mapActions(travelStore, ["detailTravel"]),
+    ...mapActions(travelStore, ["setSingleTravel", "getTravelDetail"]),
     cancelCreation() {
       this.$router.push({ name: "My Travels" });
     },
@@ -94,7 +94,7 @@ export default {
       );
     },
     moveToTravelView(travel) {
-      this.detailTravel(travel);
+      this.setSingleTravel(travel);
       this.$router.push({ name: "travelview", params: { travelid: travel.id } });
     },
   },

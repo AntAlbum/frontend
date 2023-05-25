@@ -47,9 +47,9 @@ export default {
     this.getTravelList(id);
   },
   methods: {
-    ...mapActions(travelStore, ["getTravelList", "detailTravel"]),
+    ...mapActions(travelStore, ["clearTravel", "getTravelList", "setSingleTravel", "getTravelDetail"]),
     moveToView(index, id) {
-      this.detailTravel(this.travels[index]);
+      this.setSingleTravel(this.travels[index]);
       this.$router.push({ name: "travelview", params: { travelid: id } });
     },
     moveToCreate() {

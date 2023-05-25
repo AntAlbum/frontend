@@ -76,16 +76,29 @@
           <div class="col">
             <div class="d-flex justify-content-center">
               <div class="d-grid text-center">
-                <span class="text-lg font-weight-bolder">22</span>
+                <span class="text-lg font-weight-bolder">{{detail.numAdventures}}</span>
                 <span class="text-sm opacity-8">Adventures</span>
               </div>
               <div class="d-grid text-center mx-4">
-                <span class="text-lg font-weight-bolder">200</span>
+                <span class="text-lg font-weight-bolder">{{detail.numPhotos}}</span>
                 <span class="text-sm opacity-8">Photos</span>
               </div>
             </div>
           </div>
         </div>
+        <br/>
+        <br/>
+        <div class="row justify-content-center">
+          <div class="images-container justify-content-center">
+            <div class="image" v-for="(image, index) in detail.adventures" :key="index">
+              <img :src="image.thumbnail" :alt="image.thumbnail" title="thumbnail" />
+              <div class="col-md-4 user-text custom-multi">
+                <img src="@/assets/svg/multi-window-svgrepo-com.svg" alt="Image placeholder" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
       </div>
     </div>
   </div>
@@ -101,6 +114,9 @@ export default {
   name: "TravelViewItem",
   components: {
     ArgonButton,
+  },
+  props: {
+    detail: Object
   },
   computed: {
     ...mapState(travelStore, ["travel"]),
@@ -150,6 +166,41 @@ export default {
   width: 3rem;
   height: 3rem;
   border: none;
+  border-radius: inherit;
+}
+
+.custom-multi {
+  position: absolute;
+  margin: 0.5rem;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: inherit;
+}
+
+.images-container {
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+.image {
+  width: 20rem;
+  height: 20rem;
+  position: relative;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  animation: fade-in 0.5s ease forwards;
+  align-content: center;
+  align-items: center;
+}
+img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
   border-radius: inherit;
 }
 </style>
