@@ -5,7 +5,7 @@ const routes = [
   {
     path: "/",
     name: "/",
-    redirect: "/home",
+    redirect: "/user/signin",
   },
   {
     path: "/home",
@@ -30,7 +30,7 @@ const routes = [
       },
       {
         path: "profile",
-        name: "Modify Profile",
+        name: "Edit Profile",
         component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserProfileModify"),
       },
     ],

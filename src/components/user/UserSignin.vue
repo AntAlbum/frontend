@@ -32,9 +32,9 @@
 
                   </form>
 
-                  <div class="mb-2">
+                  <div class="mb-2" style="margin-top: 10px;">
                     <a href="http://localhost:9999/oauth2/authorization/google">
-                      <img style="width: 350px; height: auto;" src="@/assets/img/google.png" >
+                      <img style="width: 350px; height: 60px;" src="@/assets/img/google.png" >
                     </a>
                   </div>
                 </div>
