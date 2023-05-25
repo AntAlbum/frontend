@@ -3,6 +3,9 @@
     <div class="user-wrap">
       <div class="cropping border-radius-lg user-image">
         <img :src="thumbnail" alt="Image placeholder" />
+        <div class="col-md-4 user-text custom-private" v-if="isPrivate">
+          <img src="@/assets/svg/computing-cloud-svgrepo-com.svg" alt="Image placeholder" />
+        </div>
         <div class="col-md-4 user-text">
           <div class="avatar-group mt-2">
             <a
@@ -102,6 +105,9 @@ export default {
   computed: {
     ...mapState(travelStore, ["travel"]),
     ...mapGetters(travelStore, ["thumbnail"]),
+    isPrivate() {
+      return this.travel.travelStatus === "PRIVATE";
+    }
   },
 };
 </script>
@@ -134,5 +140,16 @@ export default {
 .back {
   margin-top: -30px;
   background-color: white;
+}
+
+.custom-private {
+  position: absolute;
+  margin: 1.2rem;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: inherit;
 }
 </style>
