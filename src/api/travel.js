@@ -19,8 +19,8 @@ async function getTravel(travelId, success, fail) {
   await api.get(`/apii/v1/travel/${travelId}`).then(success).catch(fail);
 }
 
-async function listTravel(param, success, fail) {
-  await api.get(`apii/v1/travel`, { params: param }).then(success).catch(fail);
+async function listTravel(userid, success, fail) {
+  await api.get(`/apii/v1/travel/${userid}`).then(success).catch(fail);
 }
 
 export { createTravelInfo, addTravelPhoto, editTravel, getTravel, listTravel };

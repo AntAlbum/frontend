@@ -7,8 +7,13 @@
             <h6 class="font-weight-bolder">My Travels</h6>
             <p class="text-sm">Look around where you've been through the world!</p>
             <div class="row">
-              <div class="col-lg-3 col-md-6 col-12 custom-mouse" v-for="(travel, index) in travels" :key="index">
-                <travel-list-item @click="moveToView" :travel="travel"></travel-list-item>
+              <div
+                class="col-lg-3 col-md-6 col-12 custom-mouse"
+                v-for="(travel, index) in travels"
+                :key="index"
+              >
+                <travel-list-item @click="moveToView(travel.id)" :travel="travel">
+                </travel-list-item>
               </div>
               <div class="col-lg-3 col-md-6 col-12 vertical-align-content">
                 <travel-list-create @Click="moveToCreate"></travel-list-create>
@@ -24,56 +29,40 @@
 import TravelListItem from "@/components/travel/item/TravelListItem.vue";
 import TravelListCreate from "@/components/travel/item/TravelListCreate.vue";
 
+import { listTravel } from "@/api/travel";
+
 export default {
   name: "TravelList",
   data() {
     return {
-      travels: [
-        {
-          period: "Feb. 2023 ~ Mar. 2023",
-          title: "제주도 여행",
-          description: "동기들과 떠나는 즐거운 제주도 여행~"
-        },
-        {
-          period: "Feb. 2023 ~ Mar. 2023",
-          title: "제주도 여행",
-          description: "가족들과 떠나는 즐거운 제주도 여행~"
-        },
-        {
-          period: "Feb. 2023 ~ Mar. 2023",
-          title: "제주도 여행",
-          description: "친구들과 떠나는 즐거운 제주도 여행~"
-        },
-        {
-          period: "Feb. 2023 ~ Mar. 2023",
-          title: "제주도 여행",
-          description: "동기들과 떠나는 즐거운 제주도 여행~"
-        },
-        {
-          period: "Feb. 2023 ~ Mar. 2023",
-          title: "제주도 여행",
-          description: "동기들과 떠나는 즐거운 제주도 여행~"
-        },
-        {
-          period: "Feb. 2023 ~ Mar. 2023",
-          title: "제주도 여행",
-          description: "동기들과 떠나는 즐거운 제주도 여행~"
-        },
-      ],
+      travels: [],
     };
   },
   components: {
     TravelListItem,
     TravelListCreate,
   },
+  created() {
+    let id = 1;
+
+    listTravel(
+      id,
+      ({ data }) => {
+        this.travels = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  },
   methods: {
-    moveToView() {
-      this.$router.push({ name: "travelview" });
+    moveToView(id) {
+      this.$router.push({ name: "travelview", params: { travelid: id } });
     },
     moveToCreate() {
       this.$router.push({ name: "travelcreate" });
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -81,8 +70,8 @@ export default {
   cursor: pointer;
 }
 .vertical-align-content {
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   align-content: center;
 }
 </style>
