@@ -29,37 +29,25 @@
 import TravelListItem from "@/components/travel/item/TravelListItem.vue";
 import TravelListCreate from "@/components/travel/item/TravelListCreate.vue";
 
-import { listTravel } from "@/api/travel";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 const travelStore = "travelStore";
 
 export default {
   name: "TravelList",
-  data() {
-    return {
-      travels: [],
-    };
-  },
   components: {
     TravelListItem,
     TravelListCreate,
   },
+  computed: {
+    ...mapState(travelStore, ["travels"]),
+  },
   created() {
     let id = 1;
-
-    listTravel(
-      id,
-      ({ data }) => {
-        this.travels = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.getTravelList(id);
   },
   methods: {
-    ...mapActions(travelStore, ["detailTravel"]),
+    ...mapActions(travelStore, ["getTravelList", "detailTravel"]),
     moveToView(index, id) {
       this.detailTravel(this.travels[index]);
       this.$router.push({ name: "travelview", params: { travelid: id } });
