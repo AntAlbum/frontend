@@ -43,29 +43,45 @@
             <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
           </template>
         </sidenav-list-item>
-
-        <sidenav-list-item
-          url="/attraction/attractionlist"
-          :class="getRoute() === 'Attraction List' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Attraction List'"
-        >
-          <template v-slot:icon>
-            <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
-          </template>
-        </sidenav-list-item>
-
-        <sidenav-list-item
-          url="/user/profile"
-          :class="getRoute() === 'Modify Profile' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Modify Profile'"
-        >
-          <template v-slot:icon>
-            <i class="ni ni-camera-compact text-success text-sm opacity-10"></i>
-          </template>
-        </sidenav-list-item>
-
-        
       </li>
+
+      <li class="mt-3 nav-item">
+        <h6
+          class="text-xs ps-4 text-uppercase font-weight-bolder opacity-6"
+          :class="this.$store.state.isRTL ? 'me-4' : 'ms-2'"
+        >
+          Attraction
+        </h6>
+      </li>
+
+      <sidenav-list-item
+        url="/attraction/attractionlist"
+        :class="getRoute() === 'Attraction List' ? 'active' : ''"
+        :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Attraction List'"
+      >
+        <template v-slot:icon>
+          <i class="ni ni-collection text-success text-sm opacity-10"></i>
+        </template>
+      </sidenav-list-item>
+
+      <li class="mt-3 nav-item">
+        <h6
+          class="text-xs ps-4 text-uppercase font-weight-bolder opacity-6"
+          :class="this.$store.state.isRTL ? 'me-4' : 'ms-2'"
+        >
+          Profile
+        </h6>
+      </li>
+
+      <sidenav-list-item
+        url="/user/profile"
+        :class="getRoute() === 'Edit Profile' ? 'active' : ''"
+        :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Edit Profile'"
+      >
+        <template v-slot:icon>
+          <i class="ni ni-palette text-success text-sm opacity-10"></i>
+        </template>
+      </sidenav-list-item>
     </ul>
   </div>
 </template>

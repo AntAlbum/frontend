@@ -30,7 +30,7 @@ const routes = [
       },
       {
         path: "profile",
-        name: "Modify Profile",
+        name: "Edit Profile",
         component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserProfileModify"),
       },
     ],
