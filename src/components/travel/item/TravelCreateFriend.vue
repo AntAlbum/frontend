@@ -20,7 +20,12 @@ export default {
   },
   data() {
     return {
-      friends: [],
+      friends: [
+        {
+          userId: 1,
+          tagStatus: "MEMBER",
+        },
+      ],
     };
   },
 };

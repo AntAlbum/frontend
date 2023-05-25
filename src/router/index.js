@@ -52,7 +52,7 @@ const routes = [
           import(/* webpackChunkName: "travel" */ "@/components/travel/TravelCreate"),
       },
       {
-        path: "view",
+        path: "view/:travelid",
         name: "travelview",
         component: () => import(/* webpackChunkName: "travel" */ "@/components/travel/TravelView"),
       },

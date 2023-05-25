@@ -58,17 +58,27 @@ export default {
     },
     create() {
       const travel = this.$refs.info.travel;
+      const friends = this.$refs.friend.friends;
       const images = this.$refs.photo.files;
 
-      createTravelInfo(
-        travel,
-        ({ data }) => {
-          images.set("id", data.id);
+      const param = {
+        travel: travel,
+        members: friends,
+      };
 
+      createTravelInfo(
+        param,
+        ({ data }) => {
+          if (images === null || images === undefined) {
+            this.moveToTravelView(data.id);
+            return;
+          }
+
+          images.set("id", data.id);
           addTravelPhoto(
             images,
-            () => {
-              console.log("success");
+            ({ data }) => {
+              this.moveToTravelView(data.id);
             },
             (error) => {
               console.log(error);
@@ -79,6 +89,9 @@ export default {
           console.log(error);
         }
       );
+    },
+    moveToTravelView(travelId) {
+      this.$router.push({ name: "travelview", params: { travelid: travelId } });
     },
   },
   mounted() {
