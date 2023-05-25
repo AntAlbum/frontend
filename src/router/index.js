@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AppHome from "@/views/AppHome.vue";
+// import AppHome from "@/views/AppHome.vue";
 
 const routes = [
   {
@@ -10,12 +10,13 @@ const routes = [
   {
     path: "/home",
     name: "home",
-    component: AppHome,
+    component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserProfile"), 
   },
   {
     path: "/user",
     name: "user",
-    component: () => import(/* webpackChunkName: "user" */ "@/views/AppUser"),
+    component: () => import(/* webpackChunkName: "user" */ "@/views/AppUser"), 
+    // redirect: "/user/Profile",
     children: [
       {
         path: "signup",
@@ -26,6 +27,11 @@ const routes = [
         path: "signin",
         name: "signin",
         component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserSignin"),
+      },
+      {
+        path: "profile",
+        name: "Modify Profile",
+        component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserProfileModify"),
       },
     ],
   },

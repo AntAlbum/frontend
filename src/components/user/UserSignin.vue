@@ -34,8 +34,7 @@
 
                   <div class="mb-2">
                     <a href="http://localhost:9999/oauth2/authorization/google">
-                      <img style="width:50; height:20" src="@/assets/img/google2.png" >
-                      <b-img src="@/assets/img/google2.png" fluid alt="Responsive image"></b-img>
+                      <img style="width: 350px; height: auto;" src="@/assets/img/google.png" >
                     </a>
                   </div>
                 </div>
@@ -59,12 +58,12 @@
           background-size: cover;"
               >
                 <span class="mask bg-gradient-success opacity-6"></span>
-                <h4
+                <h3
                   class="mt-5 text-white font-weight-bolder position-relative"
-                >"Attention is the new currency"</h4>
+                >"AntAlbum"</h3>
                 <p
                   class="text-white position-relative"
-                >The more effortless the writing looks, the more effort the writer actually put into the process.</p>
+                >The place where you realize what's precious is <br> Not in front of the computer <br> It was under the blue sky</p>
               </div>
             </div>
           </div>
