@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import TravelCreate from "@/components/travel/TravelCreate";
+// import TravelCreate from "@/components/travel/TravelCreate";
 
 export default {
 name: "AppTravel",

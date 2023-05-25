@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AppHome from "@/views/AppHome.vue";
+// import AppHome from "@/views/AppHome.vue";
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
   {
     path: "/home",
     name: "home",
-    component: AppHome,
+    component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserProfile"), 
   },
   {
     path: "/user",
@@ -31,7 +31,7 @@ const routes = [
       {
         path: "profile",
         name: "Modify Profile",
-        component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserProfile"),
+        component: () => import(/* webpackChunkName: "user" */ "@/components/user/UserProfileModify"),
       },
     ],
   },

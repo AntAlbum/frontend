@@ -79,14 +79,13 @@ export default {
     ...mapMutations["UPDATE_USERINFO"],
 
     async getUser (userid) {
-          let username;
           const response = await axios.get(`http://localhost:9999/user/${userid}`);
-          username = response.data.nickname;
-          console.log(username);
+          console.log('user data: ', response.data);
+          let userInfo = response.data;
+          console.log('username >>>', userInfo.username);
 
-          // this.$store.state.userInfo = username;
-          this.$store.commit("UPDATE_USERINFO", username);
-          console.log("g하이",this.$store.state.userInfo);
+          this.$store.commit("UPDATE_USERINFO", userInfo);
+          console.log("userInfo store after login >>> ",this.$store.state.userInfo);
       }
   },
 

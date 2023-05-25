@@ -21,7 +21,7 @@
 
         <ul class="navbar-nav justify-content-end">
           <li v-if="this.$store.state.userInfo" class="nav-item d-flex align-items-center px-0 nav-link font-weight-bold text-white">
-            <span style="margin-right: 10px;"  class="d-sm-inline d-none">{{this.$store.state.userInfo}}'s album</span>
+            <span style="margin-right: 10px;"  class="d-sm-inline d-none">{{this.$store.state.userInfo.nickname}}'s album</span>
             <span style="cursor: pointer" @click="logout" class="d-sm-inline d-none">logout</span>
           </li>
 
