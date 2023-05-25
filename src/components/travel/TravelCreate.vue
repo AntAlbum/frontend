@@ -58,10 +58,16 @@ export default {
     },
     create() {
       const travel = this.$refs.info.travel;
+      const friends = this.$refs.friend.friends;
       const images = this.$refs.photo.files;
 
+      const param = {
+        travel: travel,
+        members: friends,
+      };
+
       createTravelInfo(
-        travel,
+        param,
         ({ data }) => {
           if (images.files === null || images.files === undefined) {
             this.moveToTravelView(data.id);
