@@ -63,12 +63,16 @@ export default {
       createTravelInfo(
         travel,
         ({ data }) => {
-          images.set("id", data.id);
+          if (images.files === null || images.files === undefined) {
+            this.moveToTravelView(data.id);
+            return;
+          }
 
+          images.set("id", data.id);
           addTravelPhoto(
             images,
             ({ data }) => {
-              this.$router.push({ name: "travelview", params: { travelid: data.id } });
+              this.moveToTravelView(data.id);
             },
             (error) => {
               console.log(error);
@@ -79,6 +83,9 @@ export default {
           console.log(error);
         }
       );
+    },
+    moveToTravelView(travelId) {
+      this.$router.push({ name: "travelview", params: { travelid: travelId } });
     },
   },
   mounted() {
