@@ -20,7 +20,7 @@ async function getTravel(travelId, success, fail) {
 }
 
 async function listTravel(userid, success, fail) {
-  await api.get(`/apii/v1/travel/${userid}`).then(success).catch(fail);
+  await api.get(`/apii/v1/travel/list/${userid}`).then(success).catch(fail);
 }
 
 export { createTravelInfo, addTravelPhoto, editTravel, getTravel, listTravel };

@@ -28,8 +28,10 @@ import TravelCreateFriend from "@/components/travel/item/TravelCreateFriend";
 import TravelCreatePhoto from "@/components/travel/item/TravelCreatePhoto.vue";
 
 import { createTravelInfo, addTravelPhoto } from "@/api/travel";
+import { mapActions } from "vuex";
 
 const body = document.getElementsByTagName("body")[0];
+const travelStore = "travelStore";
 
 export default {
   name: "TravelCreate",
@@ -53,6 +55,7 @@ export default {
     TravelCreatePhoto,
   },
   methods: {
+    ...mapActions(travelStore, ["setSingleTravel", "getTravelDetail"]),
     cancelCreation() {
       this.$router.push({ name: "My Travels" });
     },
@@ -69,8 +72,8 @@ export default {
       createTravelInfo(
         param,
         ({ data }) => {
-          if (images === null || images === undefined) {
-            this.moveToTravelView(data.id);
+          if (images === null || images === undefined || images.length == 0) {
+            this.moveToTravelView(data);
             return;
           }
 
@@ -78,7 +81,7 @@ export default {
           addTravelPhoto(
             images,
             ({ data }) => {
-              this.moveToTravelView(data.id);
+              this.moveToTravelView(data);
             },
             (error) => {
               console.log(error);
@@ -90,8 +93,9 @@ export default {
         }
       );
     },
-    moveToTravelView(travelId) {
-      this.$router.push({ name: "travelview", params: { travelid: travelId } });
+    moveToTravelView(travel) {
+      this.setSingleTravel(travel);
+      this.$router.push({ name: "travelview", params: { travelid: travel.id } });
     },
   },
   mounted() {

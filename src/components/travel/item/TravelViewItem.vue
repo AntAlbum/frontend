@@ -2,7 +2,10 @@
   <div class="card-profile">
     <div class="user-wrap">
       <div class="cropping border-radius-lg user-image">
-        <img src="@/assets/img/bg-profile.jpg" alt="Image placeholder" />
+        <img :src="thumbnail" alt="Image placeholder" />
+        <div class="col-md-4 user-text custom-private" v-if="isPrivate">
+          <img src="@/assets/svg/computing-cloud-svgrepo-com.svg" alt="Image placeholder" />
+        </div>
         <div class="col-md-4 user-text">
           <div class="avatar-group mt-2">
             <a
@@ -54,9 +57,9 @@
         <div class="row">
           <div class="col-md-11">
             <div class="mt-4">
-              <p class="mb-0 text-sm">Feb. 2023 ~ Mar. 2023</p>
-              <h5 class="font-weight-bolder" style="margin-top: 5px">제주도 여행</h5>
-              동기들과 떠나는 즐거운 제주도 여행~
+              <p class="mb-0 text-sm">{{ travel.duration }}</p>
+              <h5 class="font-weight-bolder" style="margin-top: 5px">{{ travel.title }}</h5>
+              {{ travel.description }}
             </div>
           </div>
           <div class="col-md-1">
@@ -73,16 +76,29 @@
           <div class="col">
             <div class="d-flex justify-content-center">
               <div class="d-grid text-center">
-                <span class="text-lg font-weight-bolder">22</span>
+                <span class="text-lg font-weight-bolder">{{detail.numAdventures}}</span>
                 <span class="text-sm opacity-8">Adventures</span>
               </div>
               <div class="d-grid text-center mx-4">
-                <span class="text-lg font-weight-bolder">200</span>
+                <span class="text-lg font-weight-bolder">{{detail.numPhotos}}</span>
                 <span class="text-sm opacity-8">Photos</span>
               </div>
             </div>
           </div>
         </div>
+        <br/>
+        <br/>
+        <div class="row justify-content-center">
+          <div class="images-container justify-content-center">
+            <div class="image" v-for="(image, index) in detail.adventures" :key="index">
+              <img :src="image.thumbnail" :alt="image.thumbnail" title="thumbnail" />
+              <div class="col-md-4 user-text custom-multi">
+                <img src="@/assets/svg/multi-window-svgrepo-com.svg" alt="Image placeholder" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
       </div>
     </div>
   </div>
@@ -90,11 +106,24 @@
 
 <script>
 import ArgonButton from "@/items/ArgonButton.vue";
+import { mapGetters, mapState } from "vuex";
+
+const travelStore = "travelStore";
 
 export default {
   name: "TravelViewItem",
   components: {
     ArgonButton,
+  },
+  props: {
+    detail: Object
+  },
+  computed: {
+    ...mapState(travelStore, ["travel"]),
+    ...mapGetters(travelStore, ["thumbnail"]),
+    isPrivate() {
+      return this.travel.travelStatus === "PRIVATE";
+    }
   },
 };
 </script>
@@ -127,5 +156,51 @@ export default {
 .back {
   margin-top: -30px;
   background-color: white;
+}
+
+.custom-private {
+  position: absolute;
+  margin: 1.2rem;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: inherit;
+}
+
+.custom-multi {
+  position: absolute;
+  margin: 0.5rem;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: inherit;
+}
+
+.images-container {
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+.image {
+  width: 20rem;
+  height: 20rem;
+  position: relative;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  animation: fade-in 0.5s ease forwards;
+  align-content: center;
+  align-items: center;
+}
+img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+  border-radius: inherit;
 }
 </style>

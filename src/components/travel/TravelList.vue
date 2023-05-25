@@ -12,7 +12,7 @@
                 v-for="(travel, index) in travels"
                 :key="index"
               >
-                <travel-list-item @click="moveToView(travel.id)" :travel="travel">
+                <travel-list-item @click="moveToView(index, travel.id)" :travel="travel">
                 </travel-list-item>
               </div>
               <div class="col-lg-3 col-md-6 col-12 vertical-align-content">
@@ -29,34 +29,27 @@
 import TravelListItem from "@/components/travel/item/TravelListItem.vue";
 import TravelListCreate from "@/components/travel/item/TravelListCreate.vue";
 
-import { listTravel } from "@/api/travel";
+import { mapActions, mapState } from "vuex";
+
+const travelStore = "travelStore";
 
 export default {
   name: "TravelList",
-  data() {
-    return {
-      travels: [],
-    };
-  },
   components: {
     TravelListItem,
     TravelListCreate,
   },
+  computed: {
+    ...mapState(travelStore, ["travels"]),
+  },
   created() {
     let id = 1;
-
-    listTravel(
-      id,
-      ({ data }) => {
-        this.travels = data;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.getTravelList(id);
   },
   methods: {
-    moveToView(id) {
+    ...mapActions(travelStore, ["clearTravel", "getTravelList", "setSingleTravel", "getTravelDetail"]),
+    moveToView(index, id) {
+      this.setSingleTravel(this.travels[index]);
       this.$router.push({ name: "travelview", params: { travelid: id } });
     },
     moveToCreate() {
