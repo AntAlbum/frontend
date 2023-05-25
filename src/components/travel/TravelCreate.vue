@@ -67,8 +67,8 @@ export default {
 
           addTravelPhoto(
             images,
-            () => {
-              console.log("success");
+            ({ data }) => {
+              this.$router.push({ name: "travelview", params: { travelid: data.id } });
             },
             (error) => {
               console.log(error);
