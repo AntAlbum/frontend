@@ -1,7 +1,8 @@
 <template>
-  <div class="py-4 container-fluid"></div>
+  <router-view></router-view>
 </template>
 <script>
+
 export default {
   name: "AppHome",
 };
