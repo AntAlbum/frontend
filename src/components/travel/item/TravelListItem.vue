@@ -3,7 +3,7 @@
     <div class="p-3 card-body">
       <div class="d-flex" style="margin-bottom: 12px">
         <div class="border-radius-lg">
-          <img :src="travel.thumbnail" alt="profile_image" class="shadow-sm w-100" />
+          <img :src="thumbnail" alt="profile_image" class="shadow-sm w-100" />
         </div>
       </div>
       <div :class="contentClass">
@@ -22,6 +22,18 @@ export default {
   name: "TravelListItem",
   props: {
     travel: Object,
+  },
+  data() {
+    return {
+      thumbnail: "",
+    };
+  },
+  created() {
+    if (this.travel.thumbnail === null || this.travel.thumbnail == undefined) {
+      this.thumbnail = require("@/assets/img/noimg.png");
+    } else {
+      this.thumbnail = this.travel.thumbnail;
+    }
   },
 };
 </script>

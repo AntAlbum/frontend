@@ -2,7 +2,7 @@
   <div class="card-profile">
     <div class="user-wrap">
       <div class="cropping border-radius-lg user-image">
-        <img src="@/assets/img/bg-profile.jpg" alt="Image placeholder" />
+        <img :src="thumbnail" alt="Image placeholder" />
         <div class="col-md-4 user-text">
           <div class="avatar-group mt-2">
             <a
@@ -54,9 +54,9 @@
         <div class="row">
           <div class="col-md-11">
             <div class="mt-4">
-              <p class="mb-0 text-sm">Feb. 2023 ~ Mar. 2023</p>
-              <h5 class="font-weight-bolder" style="margin-top: 5px">제주도 여행</h5>
-              동기들과 떠나는 즐거운 제주도 여행~
+              <p class="mb-0 text-sm">{{ travel.duration }}</p>
+              <h5 class="font-weight-bolder" style="margin-top: 5px">{{ travel.title }}</h5>
+              {{ travel.description }}
             </div>
           </div>
           <div class="col-md-1">
@@ -90,11 +90,18 @@
 
 <script>
 import ArgonButton from "@/items/ArgonButton.vue";
+import { mapGetters, mapState } from "vuex";
+
+const travelStore = "travelStore";
 
 export default {
   name: "TravelViewItem",
   components: {
     ArgonButton,
+  },
+  computed: {
+    ...mapState(travelStore, ["travel"]),
+    ...mapGetters(travelStore, ["thumbnail"]),
   },
 };
 </script>

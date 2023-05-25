@@ -69,7 +69,7 @@ export default {
       createTravelInfo(
         param,
         ({ data }) => {
-          if (images === null || images === undefined) {
+          if (images === null || images === undefined || images.length == 0) {
             this.moveToTravelView(data.id);
             return;
           }

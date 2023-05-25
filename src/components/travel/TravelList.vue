@@ -12,7 +12,7 @@
                 v-for="(travel, index) in travels"
                 :key="index"
               >
-                <travel-list-item @click="moveToView(travel.id)" :travel="travel">
+                <travel-list-item @click="moveToView(index, travel.id)" :travel="travel">
                 </travel-list-item>
               </div>
               <div class="col-lg-3 col-md-6 col-12 vertical-align-content">
@@ -30,6 +30,9 @@ import TravelListItem from "@/components/travel/item/TravelListItem.vue";
 import TravelListCreate from "@/components/travel/item/TravelListCreate.vue";
 
 import { listTravel } from "@/api/travel";
+import { mapActions } from "vuex";
+
+const travelStore = "travelStore";
 
 export default {
   name: "TravelList",
@@ -56,7 +59,9 @@ export default {
     );
   },
   methods: {
-    moveToView(id) {
+    ...mapActions(travelStore, ["detailTravel"]),
+    moveToView(index, id) {
+      this.detailTravel(this.travels[index]);
       this.$router.push({ name: "travelview", params: { travelid: id } });
     },
     moveToCreate() {
