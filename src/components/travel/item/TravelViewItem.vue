@@ -8,45 +8,15 @@
         </div>
         <div class="col-md-4 user-text">
           <div class="avatar-group mt-2">
-            <a
-              href="javascript:;"
-              class="avatar avatar-l rounded-circle"
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-              title
-              data-bs-original-title="Ryan Tompson"
-            >
-              <img src="@/assets/img/team-1.jpg" alt="team1" />
-            </a>
-            <a
-              href="javascript:;"
-              class="avatar avatar-l rounded-circle"
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-              title
-              data-bs-original-title="Romina Hadid"
-            >
-              <img src="@/assets/img/team-2.jpg" alt="team2" />
-            </a>
-            <a
-              href="javascript:;"
-              class="avatar avatar-l rounded-circle"
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-              title
-              data-bs-original-title="Alexander Smith"
-            >
-              <img src="@/assets/img/team-3.jpg" alt="team3" />
-            </a>
-            <a
-              href="javascript:;"
-              class="avatar avatar-l rounded-circle"
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-              title
-              data-bs-original-title="Jessica Doe"
-            >
-              <img src="@/assets/img/team-4.jpg" alt="team4" />
+            <a v-for="(friend, index) in detail.friends" :key="index"
+                class="avatar avatar-l rounded-circle"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title
+                :data-bs-original-title="friend.nickname"
+                @click="moveToFriend(friend.id)"
+              >
+              <img :src="friend.profile" alt="friend" />
             </a>
           </div>
         </div>
@@ -91,9 +61,9 @@
         <div class="row justify-content-center">
           <div class="images-container justify-content-center">
             <div class="image" v-for="(image, index) in detail.adventures" :key="index">
-              <img :src="image.thumbnail" :alt="image.thumbnail" title="thumbnail" />
+              <img class="adventure" :src="image.thumbnail" :alt="image.thumbnail" title="thumbnail" />
               <div class="col-md-4 user-text custom-multi">
-                <img src="@/assets/svg/multi-window-svgrepo-com.svg" alt="Image placeholder" />
+                <img class="adventure" src="@/assets/svg/multi-window-svgrepo-com.svg" alt="Image placeholder" />
               </div>
             </div>
           </div>
@@ -107,7 +77,6 @@
 <script>
 import ArgonButton from "@/items/ArgonButton.vue";
 import { mapGetters, mapState } from "vuex";
-
 const travelStore = "travelStore";
 
 export default {
@@ -123,6 +92,11 @@ export default {
     ...mapGetters(travelStore, ["thumbnail"]),
     isPrivate() {
       return this.travel.travelStatus === "PRIVATE";
+    }
+  },
+  methods: {
+    moveToFriend(userId) {
+      alert(userId);
     }
   },
 };
@@ -197,7 +171,7 @@ export default {
   align-content: center;
   align-items: center;
 }
-img {
+.adventure {
   width: inherit;
   height: inherit;
   object-fit: cover;
